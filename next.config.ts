@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["acmebackend.vercel.app", "firebasestorage.googleapis.com"],
+  }
 };
 
 export default nextConfig;
