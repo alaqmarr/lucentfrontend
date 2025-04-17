@@ -87,7 +87,7 @@ export default async function ProductPage({
             {product.quantity > 0 ? 'Add to Cart' : 'Out of Stock'}
           </button> */}
                     <Link
-                        href={`https://wa.me/+919908082672?text=${encodeURIComponent("I want to enquire about " + product.name)}`}
+                        href={`https://wa.me/+919849661522?text=${encodeURIComponent("I want to enquire about " + product.name)}`}
                     >
                         <Button
                         >
