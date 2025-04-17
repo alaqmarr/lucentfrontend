@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://acmebackend.vercel.app/api";
+const API_BASE_URL = "https://lucentbackend.vercel.app/api";
 
 export interface Product {
   id: string;

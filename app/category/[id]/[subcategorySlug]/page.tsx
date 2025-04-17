@@ -35,7 +35,7 @@ export default async function SubcategoryPage({
                     ))}
                 </div>
             ) : (
-                <p className="text-gray-500">No products found in this subcategory.</p>
+                <p className="">No products found in this subcategory.</p>
             )}
         </div>
     );

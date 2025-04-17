@@ -75,6 +75,7 @@ export default async function ProductPage({
 
                     <div className="prose max-w-none">
                         <p
+                        className='tiptap-rendered'
                             dangerouslySetInnerHTML={{ __html: product.description }}
                         ></p>
                     </div>

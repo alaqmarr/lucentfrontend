@@ -5,32 +5,31 @@ import { Button } from './ui/button';
 
 export default function AboutSection() {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-gradient-to-r from-orange-500 to-yellow-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
-            className="relative h-96 rounded-xl overflow-hidden shadow-lg"
+            className="relative h-fit bg-primary-foreground rounded-xl overflow-hidden flex shadow-lg items-center justify-center"
           >
             <Image
-              src="/about-image.jpg"
+              src="/logo.png"
               alt="About ACME"
-              fill
-              className="object-cover"
+              width={400}
+              height={100}
+              className="object-cover p-4"
             />
           </div>
           
           <div
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">About ACME</h2>
-            <p className="text-gray-600 mb-4">
-              Founded in 2010, ACME Store has been providing high-quality products to customers 
-              worldwide. Our mission is to deliver exceptional value while maintaining the 
-              highest standards of quality and customer service.
+            <h2 className="text-3xl font-bold text-black mb-6">About US</h2>
+            <p className="text-black mb-4">
+              
+            We are a dynamic instrumentation and control automation company, established in 2024 in the Emirate of Dubai, United Arab Emirates. We specialise in providing cutting-edge solutions in measuring and controlling systems, catering to a wide range of industries.
+                                    
             </p>
-            <p className="text-gray-600 mb-6">
-              With a team of dedicated professionals and a carefully curated selection of products, 
-              we strive to be your one-stop shop for all your needs. Our commitment to excellence 
-              has earned us recognition as one of the fastest-growing e-commerce platforms.
+            <p className="text-black mb-6">
+            Our company is proud to be a sister company to Oasis Group, a renowned business based in Hyderabad, India, known for its expertise and excellence in the field
             </p>
             <Button asChild>
               <Link href="/about">Learn More About Us</Link>

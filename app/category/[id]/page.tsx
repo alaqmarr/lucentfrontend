@@ -36,10 +36,10 @@ export default async function CategoryPage({
 
             className="mb-12"
           >
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold mb-2">
               {category.name}
             </h1>
-            <p className="text-gray-600">
+            <p className="">
               Browse our selection of {category.name.toLowerCase()} products
             </p>
           </div>
@@ -49,7 +49,7 @@ export default async function CategoryPage({
 
               className="mb-12"
             >
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-xl font-semibold mb-4">
                 Subcategories
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -85,7 +85,7 @@ export default async function CategoryPage({
 
               className="text-center py-12"
             >
-              <p className="text-gray-600">
+              <p className="">
                 No products found in this category. Check back soon!
               </p>
             </div>

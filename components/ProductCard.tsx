@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 export function ProductCard({ product }: { product: Product }) {
   return (
     <div
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+      className=" bg-secondary rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
     >
       <div className="relative h-48 w-full">
         <Image
@@ -17,8 +17,10 @@ export function ProductCard({ product }: { product: Product }) {
         />
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+        <h3 className="font-bold text-xl font-mono mb-2">{product.name}</h3>
+        <p className="text-sm mb-4 line-clamp-2"
+          dangerouslySetInnerHTML={{ __html: product.description.slice(0, 100) }} // Use dangerouslySetInnerHTML to render HTML content
+        ></p>
         <div className="flex justify-between items-center">
           {/* <span className="font-bold text-indigo-600">${product.price.toFixed(2)}</span> */}
           <Button asChild size="sm">

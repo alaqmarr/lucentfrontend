@@ -1,7 +1,7 @@
 'use client';
 
 import { Category, Subcategory } from '@/utils/api';
-import { ChevronDown, Menu } from 'lucide-react';
+import { ChevronDown, Menu, Navigation } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,6 +15,9 @@ import {
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from './ui/button';
+import { ModeToggle } from './theme-toggle';
+import Image from 'next/image';
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu';
 
 type CategoryWithSubcategories = Category & {
   subcategories: Subcategory[];
@@ -33,7 +36,7 @@ export function Navbar({ categories }: { categories: CategoryWithSubcategories[]
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-primary-foreground shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -42,7 +45,12 @@ export function Navbar({ categories }: { categories: CategoryWithSubcategories[]
               className="text-xl font-bold text-indigo-600"
               onClick={closeMobileMenu}
             >
-              ACME
+              <Image
+                src="/logo.png" // Replace with your logo path
+                alt="Logo"
+                width={150} // Adjust width as needed
+                height={40} // Adjust height as needed
+              />
             </Link>
           </div>
 
@@ -50,65 +58,75 @@ export function Navbar({ categories }: { categories: CategoryWithSubcategories[]
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-indigo-600"
+              className="hover:text-indigo-600"
               onClick={closeMobileMenu}
             >
               Home
             </Link>
 
-            {/* Main categories without subcategories */}
-            {categoriesWithoutSubs.map(category => (
-              <Link
-                key={category.id}
-                href={`/category/${category.id}`}
-                className="text-gray-700 hover:text-indigo-600"
-                onClick={closeMobileMenu}
+
+            <NavigationMenu>
+              <NavigationMenuList
+                className='flex items-center space-x-4'
               >
-                {category.name}
-              </Link>
-            ))}
 
-            {/* Categories with subcategories */}
-            {categoriesWithSubs.map(category => (
-              <DropdownMenu key={category.id}>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="text-gray-700 hover:text-indigo-600">
-                    {category.name} <ChevronDown className="h-4 w-4 ml-1" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-48">
-                  {category.subcategories.map(subcategory => (
-                    <DropdownMenuItem key={subcategory.id} asChild>
-                      <Link
-                        href={`/category/${category.id}/${subcategory.id}`}
-                        className="w-full"
-                        onClick={closeMobileMenu}
-                      >
-                        {subcategory.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ))}
+                {categoriesWithSubs.map(category => (
+                  <NavigationMenuItem
+                    key={category.id}
+                  >
+                    <NavigationMenuTrigger>
+                      <Button variant="ghost" className="hover:text-indigo-600">
+                        {category.name}
+                      </Button>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="w-48">
+                      {category.subcategories.map(subcategory => (
+                        <Link
+                          key={subcategory.id}
+                          href={`/category/${category.id}/${subcategory.id}`}
+                          className="block py-1 hover:text-indigo-600"
+                          onClick={closeMobileMenu}
+                        >
+                          {subcategory.name}
+                        </Link>
+                      ))}
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
+                ))}
+                {categoriesWithoutSubs.map(category => (
+                  <NavigationMenuItem
+                    key={category.id}
+                  >
+                    <Link
+                      key={category.id}
+                      href={`/category/${category.id}`}
+                      className="hover:text-indigo-600"
+                      onClick={closeMobileMenu}
+                    >
+                      {category.name}
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
             <Link
               href="/products"
-              className="text-gray-700 hover:text-indigo-600"
+              className="hover:text-indigo-600"
               onClick={closeMobileMenu}
             >
               All Products
             </Link>
             <Link
               href="/about"
-              className="text-gray-700 hover:text-indigo-600"
+              className="hover:text-indigo-600"
               onClick={closeMobileMenu}
             >
               About Us
             </Link>
             <Link
               href="/contact"
-              className="text-gray-700 hover:text-indigo-600"
+              className="hover:text-indigo-600"
               onClick={closeMobileMenu}
             >
               Contact
@@ -116,7 +134,8 @@ export function Navbar({ categories }: { categories: CategoryWithSubcategories[]
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-x-3">
+            <ModeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-gray-700 hover:text-indigo-600"
